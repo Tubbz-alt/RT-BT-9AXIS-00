@@ -1,0 +1,1099 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-BT-9AXIS-00: mpu9250.c ファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-BT-9AXIS-00
+   &#160;<span id="projectnumber">0</span>
+   </div>
+   <div id="projectbrief">無線9軸IMUセンサモジュールのサンプルプログラムに関する説明</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.10 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>総合概要</span></a></li>
+      <li><a href="modules.html"><span>モジュール</span></a></li>
+      <li><a href="annotated.html"><span>データ構造</span></a></li>
+      <li class="current"><a href="files.html"><span>ファイル</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="検索" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>ファイル一覧</span></a></li>
+      <li><a href="globals.html"><span>大域各種</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('mpu9250_8c.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">マクロ定義</a> &#124;
+<a href="#func-members">関数</a> &#124;
+<a href="#var-members">変数</a>  </div>
+  <div class="headertitle">
+<div class="title">mpu9250.c ファイル</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>MPU9250を使えるようにするための関数群 <br />
+  
+<a href="#details">[詳解]</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="type_8h_source.html">type.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mpu9250_8h_source.html">mpu9250.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="i2c_8h_source.html">i2c.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="uart_8h_source.html">uart.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_system_tick_timer_8h_source.html">SystemTickTimer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_main_function_8h_source.html">MainFunction.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tiny_math_function_8h_source.html">TinyMathFunction.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="debug_8h_source.html">debug.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+mpu9250.c の依存先関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c__incl.png" border="0" usemap="#mpu9250_8c" alt=""/></div>
+<map name="mpu9250_8c" id="mpu9250_8c">
+<area shape="rect" id="node2" href="type_8h.html" title="type.h" alt="" coords="5,80,64,107"/>
+<area shape="rect" id="node3" href="mpu9250_8h.html" title="mpu9250.h" alt="" coords="89,80,175,107"/>
+<area shape="rect" id="node4" href="i2c_8h.html" title="i2c.h" alt="" coords="200,80,251,107"/>
+<area shape="rect" id="node5" href="uart_8h.html" title="uart.h" alt="" coords="275,80,330,107"/>
+<area shape="rect" id="node6" href="_system_tick_timer_8h.html" title="SystemTickTimer.h" alt="" coords="354,80,489,107"/>
+<area shape="rect" id="node7" href="_main_function_8h.html" title="MainFunction.h" alt="" coords="513,80,623,107"/>
+<area shape="rect" id="node8" href="tiny_math_function_8h.html" title="TinyMathFunction.h" alt="" coords="648,80,784,107"/>
+<area shape="rect" id="node9" href="debug_8h.html" title="debug.h" alt="" coords="809,80,877,107"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+マクロ定義</h2></td></tr>
+<tr class="memitem:a198f15ae3c1f5aca96f5bc5f54d499d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a198f15ae3c1f5aca96f5bc5f54d499d4">MPU9250_W</a>&#160;&#160;&#160;0xd0</td></tr>
+<tr class="separator:a198f15ae3c1f5aca96f5bc5f54d499d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63e47652fef2001030bce1e559d00d25"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a63e47652fef2001030bce1e559d00d25">MPU9250_R</a>&#160;&#160;&#160;0xd1</td></tr>
+<tr class="separator:a63e47652fef2001030bce1e559d00d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad92a792ff93e17ee42b3cd1a12805444"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#ad92a792ff93e17ee42b3cd1a12805444">AK8963_W</a>&#160;&#160;&#160;0x18</td></tr>
+<tr class="separator:ad92a792ff93e17ee42b3cd1a12805444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeb43a530b2ca51397e0d6a9084e9e9b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#adeb43a530b2ca51397e0d6a9084e9e9b">AK8963_R</a>&#160;&#160;&#160;0x19</td></tr>
+<tr class="separator:adeb43a530b2ca51397e0d6a9084e9e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec7e918da8aa9eb26979868776b97746"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#aec7e918da8aa9eb26979868776b97746">NUM_REF</a>&#160;&#160;&#160;(100)</td></tr>
+<tr class="separator:aec7e918da8aa9eb26979868776b97746"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+関数</h2></td></tr>
+<tr class="memitem:af5ba140727514d78380957728fb85858"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#af5ba140727514d78380957728fb85858">initMPU9250</a> (void)</td></tr>
+<tr class="separator:af5ba140727514d78380957728fb85858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92d3fbffdf08a1e1f34704118cd70ad5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a92d3fbffdf08a1e1f34704118cd70ad5">initAK8963</a> (void)</td></tr>
+<tr class="separator:a92d3fbffdf08a1e1f34704118cd70ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466eb88f64c8c1b064b56a36f6386cf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a466eb88f64c8c1b064b56a36f6386cf8">getDataFromMPU9250</a> (<a class="el" href="type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *dest_array)</td></tr>
+<tr class="separator:a466eb88f64c8c1b064b56a36f6386cf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee86ce4d1f3ddc7b48689833de2741c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#aee86ce4d1f3ddc7b48689833de2741c2">getDataFromAK8963</a> (<a class="el" href="type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *dest_array)</td></tr>
+<tr class="separator:aee86ce4d1f3ddc7b48689833de2741c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a46669bada588b92e12a664eb056db5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a0a46669bada588b92e12a664eb056db5">whoAmI</a> (void)</td></tr>
+<tr class="separator:a0a46669bada588b92e12a664eb056db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa434e4a617768a7869cbaea0355911c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#aa434e4a617768a7869cbaea0355911c0">getOmega</a> (float *vec)</td></tr>
+<tr class="separator:aa434e4a617768a7869cbaea0355911c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83c4db4d92572802f8c5b365abc67d5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a83c4db4d92572802f8c5b365abc67d5f">getMag</a> (float *vec)</td></tr>
+<tr class="separator:a83c4db4d92572802f8c5b365abc67d5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad89d8ce61d6a3d9d3ee69d87c9cf3ad9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#ad89d8ce61d6a3d9d3ee69d87c9cf3ad9">getAcc</a> (float *vec)</td></tr>
+<tr class="separator:ad89d8ce61d6a3d9d3ee69d87c9cf3ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f254dc0089216a5fcb41c2b5775aef3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a9f254dc0089216a5fcb41c2b5775aef3">getTemp</a> (float *temp)</td></tr>
+<tr class="separator:a9f254dc0089216a5fcb41c2b5775aef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01202d1c9ed8b04ddfd493d8e41e6379"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a01202d1c9ed8b04ddfd493d8e41e6379">initOmegaRef</a> ()</td></tr>
+<tr class="separator:a01202d1c9ed8b04ddfd493d8e41e6379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66d79adf139b9f962f2760494efeab53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a66d79adf139b9f962f2760494efeab53">getOmegaLPF</a> (float *vec)</td></tr>
+<tr class="separator:a66d79adf139b9f962f2760494efeab53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1067d7d66e398f17dd2b94003ed0354c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a1067d7d66e398f17dd2b94003ed0354c">getMagLPF</a> (float *vec)</td></tr>
+<tr class="separator:a1067d7d66e398f17dd2b94003ed0354c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8473b460bd6d74ce27ad309188fbd60b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a8473b460bd6d74ce27ad309188fbd60b">getAccLPF</a> (float *vec)</td></tr>
+<tr class="separator:a8473b460bd6d74ce27ad309188fbd60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18aaadf624297a7a1dd9969216e4bde7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a18aaadf624297a7a1dd9969216e4bde7">getOmegaStrLPF</a> (float *vec)</td></tr>
+<tr class="separator:a18aaadf624297a7a1dd9969216e4bde7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae56215847c9090c40ca9de38eb8e8557"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#ae56215847c9090c40ca9de38eb8e8557">getMagStrLPF</a> (float *vec)</td></tr>
+<tr class="separator:ae56215847c9090c40ca9de38eb8e8557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5ae8a0d1e196d3e86b5cfa2c399a31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a3f5ae8a0d1e196d3e86b5cfa2c399a31">getAccStrLPF</a> (float *vec)</td></tr>
+<tr class="separator:a3f5ae8a0d1e196d3e86b5cfa2c399a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9d8ae04b09bd47f6a25bca5616734d7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#ab9d8ae04b09bd47f6a25bca5616734d7">getOmegaRef</a> (float *vec)</td></tr>
+<tr class="separator:ab9d8ae04b09bd47f6a25bca5616734d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af71318ab8b9b65fb1280decc66abd76f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#af71318ab8b9b65fb1280decc66abd76f">setOmegaRef_x</a> (float ref_x)</td></tr>
+<tr class="separator:af71318ab8b9b65fb1280decc66abd76f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bffd52e6724ac4c4de90423eca89ed5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a5bffd52e6724ac4c4de90423eca89ed5">setOmegaRef_y</a> (float ref_y)</td></tr>
+<tr class="separator:a5bffd52e6724ac4c4de90423eca89ed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40303c6f4989d2811d67c243c0f91deb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a40303c6f4989d2811d67c243c0f91deb">setOmegaRef_z</a> (float ref_z)</td></tr>
+<tr class="separator:a40303c6f4989d2811d67c243c0f91deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c74a170b91fa6bef07054c2037490c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a2c74a170b91fa6bef07054c2037490c5">debugMPU9250</a> (void)</td></tr>
+<tr class="separator:a2c74a170b91fa6bef07054c2037490c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+変数</h2></td></tr>
+<tr class="memitem:a766e99196841c51b7560453d06423b6a"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a766e99196841c51b7560453d06423b6a">I2CMasterBuffer</a> [<a class="el" href="uart_8h.html#aeca034f67218340ecb2261a22c2f3dcd">BUFSIZE</a>]</td></tr>
+<tr class="separator:a766e99196841c51b7560453d06423b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d36144f2477482e231da2b8a14b6380"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a8d36144f2477482e231da2b8a14b6380">I2CSlaveBuffer</a> [<a class="el" href="uart_8h.html#aeca034f67218340ecb2261a22c2f3dcd">BUFSIZE</a>]</td></tr>
+<tr class="separator:a8d36144f2477482e231da2b8a14b6380"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99aaa16c53f267f8862d444f522d763c"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a99aaa16c53f267f8862d444f522d763c">I2CReadLength</a></td></tr>
+<tr class="separator:a99aaa16c53f267f8862d444f522d763c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6227a3e6005b75f07040af82dc4b8a6e"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a6227a3e6005b75f07040af82dc4b8a6e">I2CWriteLength</a></td></tr>
+<tr class="separator:a6227a3e6005b75f07040af82dc4b8a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78dfe60875bfa39e7a5a1922788c8887"><td class="memItemLeft" align="right" valign="top">volatile float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#a78dfe60875bfa39e7a5a1922788c8887">gain_LPF</a> = 0.8</td></tr>
+<tr class="separator:a78dfe60875bfa39e7a5a1922788c8887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af14286333f51c15766ab0ce06a29b503"><td class="memItemLeft" align="right" valign="top">volatile float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpu9250_8c.html#af14286333f51c15766ab0ce06a29b503">gain_str_LPF</a> = 0.1</td></tr>
+<tr class="separator:af14286333f51c15766ab0ce06a29b503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>MPU9250を使えるようにするための関数群 <br />
+ </p>
+<dl class="section author"><dt>著者</dt><dd>RTCorp. Ryota Takahashi </dd></dl>
+</div><h2 class="groupheader">マクロ定義詳解</h2>
+<a class="anchor" id="adeb43a530b2ca51397e0d6a9084e9e9b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AK8963_R&#160;&#160;&#160;0x19</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad92a792ff93e17ee42b3cd1a12805444"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AK8963_W&#160;&#160;&#160;0x18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a63e47652fef2001030bce1e559d00d25"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MPU9250_R&#160;&#160;&#160;0xd1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a198f15ae3c1f5aca96f5bc5f54d499d4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MPU9250_W&#160;&#160;&#160;0xd0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aec7e918da8aa9eb26979868776b97746"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NUM_REF&#160;&#160;&#160;(100)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a class="anchor" id="a2c74a170b91fa6bef07054c2037490c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void debugMPU9250 </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>デバッグ用関数</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a2c74a170b91fa6bef07054c2037490c5_cgraph.png" border="0" usemap="#mpu9250_8c_a2c74a170b91fa6bef07054c2037490c5_cgraph" alt=""/></div>
+<map name="mpu9250_8c_a2c74a170b91fa6bef07054c2037490c5_cgraph" id="mpu9250_8c_a2c74a170b91fa6bef07054c2037490c5_cgraph">
+<area shape="rect" id="node2" href="debug_8h.html#a1bd9f450dbe5f0e704bee6a2d945822f" title="myPrintfUSB" alt="" coords="168,31,265,57"/>
+<area shape="rect" id="node3" href="usb_transmission_8h.html#a2d6d7c05d91576af25410bb856740976" title="VCOM_SendData" alt="" coords="319,5,444,32"/>
+<area shape="rect" id="node9" href="usb_transmission_8h.html#a4a2bacd9a23fff588cb7f5b6538e7b25" title="VCOM_CheckState" alt="" coords="313,56,449,83"/>
+<area shape="rect" id="node4" href="usbhw_8h.html#a36b8c7a6fd6052d4c52995d8553c0500" title="USB_WriteEP" alt="" coords="687,31,792,57"/>
+<area shape="rect" id="node5" href="usbhw_8c.html#a4e23ac0156cf32b8055949e0c326adcb" title="delay" alt="" coords="855,5,909,32"/>
+<area shape="rect" id="node6" href="usbhw_8c.html#aff86a67a8cc3b52fae0e91e96557fc60" title="WrCmdEP" alt="" coords="840,56,924,83"/>
+<area shape="rect" id="node7" href="usbhw_8c.html#a43a57d8b8cb335d6c95b8517a46c244f" title="WrCmd" alt="" coords="972,31,1039,57"/>
+<area shape="rect" id="node8" href="usbhw_8c.html#a1aecf030a0d76bccc83101a1cc0e870c" title="EPAdr" alt="" coords="975,81,1035,108"/>
+<area shape="rect" id="node10" href="cdcuser_8h.html#a7ce873af21ad9bad0f156b742d60e7db" title="CDC_GetSerialState" alt="" coords="497,107,639,133"/>
+<area shape="rect" id="node12" href="cdcuser_8h.html#a514c6123d586172d406abff1940a0591" title="CDC_NotificationIn" alt="" coords="503,56,633,83"/>
+<area shape="rect" id="node11" href="serial_8h.html#a622ef81b7c41187c4a56acf8ad01a512" title="ser_LineState" alt="" coords="688,107,791,133"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad89d8ce61d6a3d9d3ee69d87c9cf3ad9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getAcc </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>加速度ベクトルを返す</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td>格納先 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8473b460bd6d74ce27ad309188fbd60b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getAccLPF </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>加速度センサ値にローパスフィルタをかけた値を*vecに格納</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a8473b460bd6d74ce27ad309188fbd60b_icgraph.png" border="0" usemap="#mpu9250_8c_a8473b460bd6d74ce27ad309188fbd60b_icgraph" alt=""/></div>
+<map name="mpu9250_8c_a8473b460bd6d74ce27ad309188fbd60b_icgraph" id="mpu9250_8c_a8473b460bd6d74ce27ad309188fbd60b_icgraph">
+<area shape="rect" id="node2" href="_main_function_8c.html#a722d97fdabdf6a349b0ad02c82da1d23" title="TIMER32_1_IRQHandler" alt="" coords="140,5,303,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a3f5ae8a0d1e196d3e86b5cfa2c399a31"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getAccStrLPF </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>加速度センサ値に強めのローパスフィルタをかけた値を*vecに格納</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aee86ce4d1f3ddc7b48689833de2741c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getDataFromAK8963 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>dest_array</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>AK8963(MPU9250の地磁気センサ)のデータ(MagXYZ) <br />
+ をdest_arrayに次のように格納 <br />
+ Asa[]: 工場出荷時にAK8963に書きこまれた補正値 <br />
+ AK8963の初期化の際にAsa[]に格納 <br />
+ byte <br />
+ 0 MagX 下位 <br />
+ 1 MagX 上位 <br />
+ 2 MagY 下位 <br />
+ 3 MagY 上位 <br />
+ 4 MagZ 下位 <br />
+ 5 MagZ 上位 <br />
+ さらにセンサの読み取り値を物理量に変換しmag_vec[i]に格納する.</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*dest_array</td><td>データの格納先 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_aee86ce4d1f3ddc7b48689833de2741c2_cgraph.png" border="0" usemap="#mpu9250_8c_aee86ce4d1f3ddc7b48689833de2741c2_cgraph" alt=""/></div>
+<map name="mpu9250_8c_aee86ce4d1f3ddc7b48689833de2741c2_cgraph" id="mpu9250_8c_aee86ce4d1f3ddc7b48689833de2741c2_cgraph">
+<area shape="rect" id="node2" href="i2c_8h.html#a0036f04c55d6d2118405ca42632bdbd4" title="I2CEngine" alt="" coords="196,31,277,57"/>
+<area shape="rect" id="node3" href="i2c_8c.html#a7c87427cfa767315491db0a0c005ec59" title="I2CStart" alt="" coords="325,5,395,32"/>
+<area shape="rect" id="node4" href="i2c_8c.html#a7b1d12f3a83330eda885db24a701e1b5" title="I2CStop" alt="" coords="326,56,394,83"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_aee86ce4d1f3ddc7b48689833de2741c2_icgraph.png" border="0" usemap="#mpu9250_8c_aee86ce4d1f3ddc7b48689833de2741c2_icgraph" alt=""/></div>
+<map name="mpu9250_8c_aee86ce4d1f3ddc7b48689833de2741c2_icgraph" id="mpu9250_8c_aee86ce4d1f3ddc7b48689833de2741c2_icgraph">
+<area shape="rect" id="node2" href="_main_function_8c.html#a722d97fdabdf6a349b0ad02c82da1d23" title="TIMER32_1_IRQHandler" alt="" coords="196,5,359,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a466eb88f64c8c1b064b56a36f6386cf8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getDataFromMPU9250 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>dest_array</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>MPU9250のデータ (AccXYZ + GyroXYZ + temperature) <br />
+ dest_arrayに次のように格納 <br />
+ byte <br />
+ 0 accX 下位 <br />
+ 1 accX 上位 <br />
+ 2 accY 下位 <br />
+ 3 accY 上位 <br />
+ 4 accZ 下位 <br />
+ 5 accZ 上位 <br />
+ 6 temp 下位 <br />
+ 7 temp 上位 <br />
+ 8 gyroX 下位 <br />
+ 9 gyroX　上位 <br />
+ 10 gyroY　下位 <br />
+ 11 gyroY 上位 <br />
+ 12 gyroZ 下位 <br />
+ 13 gyroZ 上位 <br />
+ さらに, センサの読み取りデータを物理量に変換し, acc_vec[i] <br />
+ omega_vec[i]に格納する.</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">　　*dest_array　データの格納先</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a466eb88f64c8c1b064b56a36f6386cf8_cgraph.png" border="0" usemap="#mpu9250_8c_a466eb88f64c8c1b064b56a36f6386cf8_cgraph" alt=""/></div>
+<map name="mpu9250_8c_a466eb88f64c8c1b064b56a36f6386cf8_cgraph" id="mpu9250_8c_a466eb88f64c8c1b064b56a36f6386cf8_cgraph">
+<area shape="rect" id="node2" href="i2c_8h.html#a0036f04c55d6d2118405ca42632bdbd4" title="I2CEngine" alt="" coords="208,31,289,57"/>
+<area shape="rect" id="node3" href="i2c_8c.html#a7c87427cfa767315491db0a0c005ec59" title="I2CStart" alt="" coords="337,5,407,32"/>
+<area shape="rect" id="node4" href="i2c_8c.html#a7b1d12f3a83330eda885db24a701e1b5" title="I2CStop" alt="" coords="338,56,406,83"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a466eb88f64c8c1b064b56a36f6386cf8_icgraph.png" border="0" usemap="#mpu9250_8c_a466eb88f64c8c1b064b56a36f6386cf8_icgraph" alt=""/></div>
+<map name="mpu9250_8c_a466eb88f64c8c1b064b56a36f6386cf8_icgraph" id="mpu9250_8c_a466eb88f64c8c1b064b56a36f6386cf8_icgraph">
+<area shape="rect" id="node2" href="_main_function_8c.html#a722d97fdabdf6a349b0ad02c82da1d23" title="TIMER32_1_IRQHandler" alt="" coords="208,5,371,32"/>
+<area shape="rect" id="node3" href="mpu9250_8c.html#a01202d1c9ed8b04ddfd493d8e41e6379" title="initOmegaRef" alt="" coords="239,56,339,83"/>
+<area shape="rect" id="node4" href="main_8c.html#a2858154e2009b0e6e616f313177762bc" title="init" alt="" coords="419,56,457,83"/>
+<area shape="rect" id="node5" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="505,56,556,83"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a83c4db4d92572802f8c5b365abc67d5f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getMag </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>地磁気ベクトルを返す</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec　格納先</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1067d7d66e398f17dd2b94003ed0354c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getMagLPF </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>地磁気センサ値にローパスフィルタをかけた値を*vecに格納</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae56215847c9090c40ca9de38eb8e8557"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getMagStrLPF </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>地磁気センサ値に強めのローパスフィルタをかけた値を*vecに格納</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa434e4a617768a7869cbaea0355911c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getOmega </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>角速度ベクトルを返す</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_aa434e4a617768a7869cbaea0355911c0_icgraph.png" border="0" usemap="#mpu9250_8c_aa434e4a617768a7869cbaea0355911c0_icgraph" alt=""/></div>
+<map name="mpu9250_8c_aa434e4a617768a7869cbaea0355911c0_icgraph" id="mpu9250_8c_aa434e4a617768a7869cbaea0355911c0_icgraph">
+<area shape="rect" id="node2" href="_main_function_8c.html#a722d97fdabdf6a349b0ad02c82da1d23" title="TIMER32_1_IRQHandler" alt="" coords="136,5,299,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a66d79adf139b9f962f2760494efeab53"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getOmegaLPF </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ジャイロセンサ値にローパスフィルタをかけた値を*vecに格納</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab9d8ae04b09bd47f6a25bca5616734d7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float getOmegaRef </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>現在のジャイロセンサの静止時のリファレンス値を返す</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>*vec </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a18aaadf624297a7a1dd9969216e4bde7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getOmegaStrLPF </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ジャイロセンサ値に強めのローパスフィルタをかけた値を*vecに格納</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a18aaadf624297a7a1dd9969216e4bde7_icgraph.png" border="0" usemap="#mpu9250_8c_a18aaadf624297a7a1dd9969216e4bde7_icgraph" alt=""/></div>
+<map name="mpu9250_8c_a18aaadf624297a7a1dd9969216e4bde7_icgraph" id="mpu9250_8c_a18aaadf624297a7a1dd9969216e4bde7_icgraph">
+<area shape="rect" id="node2" href="_main_function_8c.html#a722d97fdabdf6a349b0ad02c82da1d23" title="TIMER32_1_IRQHandler" alt="" coords="176,5,339,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a9f254dc0089216a5fcb41c2b5775aef3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getTemp </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>temp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>温度を返す</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*vec</td><td>格納先 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a92d3fbffdf08a1e1f34704118cd70ad5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initAK8963 </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Asa[]に感度調整値を格納.</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a92d3fbffdf08a1e1f34704118cd70ad5_cgraph.png" border="0" usemap="#mpu9250_8c_a92d3fbffdf08a1e1f34704118cd70ad5_cgraph" alt=""/></div>
+<map name="mpu9250_8c_a92d3fbffdf08a1e1f34704118cd70ad5_cgraph" id="mpu9250_8c_a92d3fbffdf08a1e1f34704118cd70ad5_cgraph">
+<area shape="rect" id="node2" href="i2c_8h.html#a0036f04c55d6d2118405ca42632bdbd4" title="I2CEngine" alt="" coords="140,31,221,57"/>
+<area shape="rect" id="node5" href="_system_tick_timer_8h.html#a18af7476504a76def67727301e3968fb" title="wait1msec" alt="" coords="139,81,223,108"/>
+<area shape="rect" id="node3" href="i2c_8c.html#a7c87427cfa767315491db0a0c005ec59" title="I2CStart" alt="" coords="271,5,340,32"/>
+<area shape="rect" id="node4" href="i2c_8c.html#a7b1d12f3a83330eda885db24a701e1b5" title="I2CStop" alt="" coords="271,56,339,83"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a92d3fbffdf08a1e1f34704118cd70ad5_icgraph.png" border="0" usemap="#mpu9250_8c_a92d3fbffdf08a1e1f34704118cd70ad5_icgraph" alt=""/></div>
+<map name="mpu9250_8c_a92d3fbffdf08a1e1f34704118cd70ad5_icgraph" id="mpu9250_8c_a92d3fbffdf08a1e1f34704118cd70ad5_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a2858154e2009b0e6e616f313177762bc" title="init" alt="" coords="139,5,177,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="225,5,276,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af5ba140727514d78380957728fb85858"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initMPU9250 </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>MPU9250の初期化(MPU9250のジャイロ,加速度センサ)</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_af5ba140727514d78380957728fb85858_cgraph.png" border="0" usemap="#mpu9250_8c_af5ba140727514d78380957728fb85858_cgraph" alt=""/></div>
+<map name="mpu9250_8c_af5ba140727514d78380957728fb85858_cgraph" id="mpu9250_8c_af5ba140727514d78380957728fb85858_cgraph">
+<area shape="rect" id="node2" href="i2c_8h.html#a0036f04c55d6d2118405ca42632bdbd4" title="I2CEngine" alt="" coords="151,31,232,57"/>
+<area shape="rect" id="node5" href="_system_tick_timer_8h.html#a18af7476504a76def67727301e3968fb" title="wait1msec" alt="" coords="149,81,233,108"/>
+<area shape="rect" id="node3" href="i2c_8c.html#a7c87427cfa767315491db0a0c005ec59" title="I2CStart" alt="" coords="281,5,351,32"/>
+<area shape="rect" id="node4" href="i2c_8c.html#a7b1d12f3a83330eda885db24a701e1b5" title="I2CStop" alt="" coords="282,56,350,83"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_af5ba140727514d78380957728fb85858_icgraph.png" border="0" usemap="#mpu9250_8c_af5ba140727514d78380957728fb85858_icgraph" alt=""/></div>
+<map name="mpu9250_8c_af5ba140727514d78380957728fb85858_icgraph" id="mpu9250_8c_af5ba140727514d78380957728fb85858_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a2858154e2009b0e6e616f313177762bc" title="init" alt="" coords="149,5,188,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="236,5,287,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a01202d1c9ed8b04ddfd493d8e41e6379"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initOmegaRef </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ジャイロの静止時のリファレンス取得用関数</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a01202d1c9ed8b04ddfd493d8e41e6379_cgraph.png" border="0" usemap="#mpu9250_8c_a01202d1c9ed8b04ddfd493d8e41e6379_cgraph" alt=""/></div>
+<map name="mpu9250_8c_a01202d1c9ed8b04ddfd493d8e41e6379_cgraph" id="mpu9250_8c_a01202d1c9ed8b04ddfd493d8e41e6379_cgraph">
+<area shape="rect" id="node2" href="mpu9250_8c.html#a466eb88f64c8c1b064b56a36f6386cf8" title="getDataFromMPU9250" alt="" coords="153,31,308,57"/>
+<area shape="rect" id="node6" href="_system_tick_timer_8h.html#a4c0b76146789e1b5c90418596dd38895" title="wait1usec" alt="" coords="191,81,271,108"/>
+<area shape="rect" id="node7" href="tiny_math_function_8h.html#aa9043655ce2582b275428e9230738a37" title="quickSort" alt="" coords="192,132,269,159"/>
+<area shape="rect" id="node3" href="i2c_8h.html#a0036f04c55d6d2118405ca42632bdbd4" title="I2CEngine" alt="" coords="356,31,437,57"/>
+<area shape="rect" id="node4" href="i2c_8c.html#a7c87427cfa767315491db0a0c005ec59" title="I2CStart" alt="" coords="485,5,555,32"/>
+<area shape="rect" id="node5" href="i2c_8c.html#a7b1d12f3a83330eda885db24a701e1b5" title="I2CStop" alt="" coords="486,56,554,83"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a01202d1c9ed8b04ddfd493d8e41e6379_icgraph.png" border="0" usemap="#mpu9250_8c_a01202d1c9ed8b04ddfd493d8e41e6379_icgraph" alt=""/></div>
+<map name="mpu9250_8c_a01202d1c9ed8b04ddfd493d8e41e6379_icgraph" id="mpu9250_8c_a01202d1c9ed8b04ddfd493d8e41e6379_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a2858154e2009b0e6e616f313177762bc" title="init" alt="" coords="153,5,192,32"/>
+<area shape="rect" id="node3" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="240,5,291,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="af71318ab8b9b65fb1280decc66abd76f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setOmegaRef_x </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ref_x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ジャイロのリファレンス値ref_xを書き換える.</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ref_x</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5bffd52e6724ac4c4de90423eca89ed5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setOmegaRef_y </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ref_y</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ジャイロのリファレンス値ref_yを書き換える.</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ref_y</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a40303c6f4989d2811d67c243c0f91deb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setOmegaRef_z </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ref_z</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ジャイロのリファレンス値ref_zを書き換える.</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ref_z</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0a46669bada588b92e12a664eb056db5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void whoAmI </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>AK8963(MPU9250の地磁気センサ)のwho am iを読む <br />
+ 1秒ごとにwho am iを呼びだし続ける無限ループが記述されている <br />
+</p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>void </dd></dl>
+
+<p><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="mpu9250_8c_a0a46669bada588b92e12a664eb056db5_cgraph.png" border="0" usemap="#mpu9250_8c_a0a46669bada588b92e12a664eb056db5_cgraph" alt=""/></div>
+<map name="mpu9250_8c_a0a46669bada588b92e12a664eb056db5_cgraph" id="mpu9250_8c_a0a46669bada588b92e12a664eb056db5_cgraph">
+<area shape="rect" id="node2" href="_main_function_8h.html#a74ff919bbe2bc33306db409cd474705f" title="setSendDataEnable" alt="" coords="121,5,259,32"/>
+<area shape="rect" id="node3" href="debug_8h.html#a1bd9f450dbe5f0e704bee6a2d945822f" title="myPrintfUSB" alt="" coords="141,56,239,83"/>
+<area shape="rect" id="node14" href="i2c_8h.html#a0036f04c55d6d2118405ca42632bdbd4" title="I2CEngine" alt="" coords="149,107,231,133"/>
+<area shape="rect" id="node17" href="_system_tick_timer_8h.html#a18af7476504a76def67727301e3968fb" title="wait1msec" alt="" coords="148,157,232,184"/>
+<area shape="rect" id="node4" href="usb_transmission_8h.html#a2d6d7c05d91576af25410bb856740976" title="VCOM_SendData" alt="" coords="499,5,624,32"/>
+<area shape="rect" id="node10" href="usb_transmission_8h.html#a4a2bacd9a23fff588cb7f5b6538e7b25" title="VCOM_CheckState" alt="" coords="307,56,443,83"/>
+<area shape="rect" id="node5" href="usbhw_8h.html#a36b8c7a6fd6052d4c52995d8553c0500" title="USB_WriteEP" alt="" coords="680,31,785,57"/>
+<area shape="rect" id="node6" href="usbhw_8c.html#a4e23ac0156cf32b8055949e0c326adcb" title="delay" alt="" coords="849,5,902,32"/>
+<area shape="rect" id="node7" href="usbhw_8c.html#aff86a67a8cc3b52fae0e91e96557fc60" title="WrCmdEP" alt="" coords="833,56,917,83"/>
+<area shape="rect" id="node8" href="usbhw_8c.html#a43a57d8b8cb335d6c95b8517a46c244f" title="WrCmd" alt="" coords="965,31,1032,57"/>
+<area shape="rect" id="node9" href="usbhw_8c.html#a1aecf030a0d76bccc83101a1cc0e870c" title="EPAdr" alt="" coords="969,81,1029,108"/>
+<area shape="rect" id="node11" href="cdcuser_8h.html#a7ce873af21ad9bad0f156b742d60e7db" title="CDC_GetSerialState" alt="" coords="491,107,632,133"/>
+<area shape="rect" id="node13" href="cdcuser_8h.html#a514c6123d586172d406abff1940a0591" title="CDC_NotificationIn" alt="" coords="496,56,627,83"/>
+<area shape="rect" id="node12" href="serial_8h.html#a622ef81b7c41187c4a56acf8ad01a512" title="ser_LineState" alt="" coords="681,107,784,133"/>
+<area shape="rect" id="node15" href="i2c_8c.html#a7c87427cfa767315491db0a0c005ec59" title="I2CStart" alt="" coords="340,107,409,133"/>
+<area shape="rect" id="node16" href="i2c_8c.html#a7b1d12f3a83330eda885db24a701e1b5" title="I2CStop" alt="" coords="341,157,409,184"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">変数詳解</h2>
+<a class="anchor" id="a78dfe60875bfa39e7a5a1922788c8887"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile float gain_LPF = 0.8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af14286333f51c15766ab0ce06a29b503"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile float gain_str_LPF = 0.1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a766e99196841c51b7560453d06423b6a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile <a class="el" href="type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> I2CMasterBuffer[<a class="el" href="uart_8h.html#aeca034f67218340ecb2261a22c2f3dcd">BUFSIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a99aaa16c53f267f8862d444f522d763c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile <a class="el" href="type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> I2CReadLength</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8d36144f2477482e231da2b8a14b6380"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile <a class="el" href="type_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> I2CSlaveBuffer[<a class="el" href="uart_8h.html#aeca034f67218340ecb2261a22c2f3dcd">BUFSIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6227a3e6005b75f07040af82dc4b8a6e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile <a class="el" href="type_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> I2CWriteLength</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_cdc4e948bb3f45bc1834759842ee1b31.html">Downloads</a></li><li class="navelem"><a class="el" href="dir_29721e2fd9d5e476c9f656894c9e55bd.html">RT-BT-9AXIS-00-master</a></li><li class="navelem"><a class="el" href="dir_71a1ae3dbe3e14cd6e65f1147900d120.html">RT-BT-9AXIS-00-master</a></li><li class="navelem"><a class="el" href="dir_73ba3da9866f4c17f1ed57bc7f10bc77.html">LPCXpresso Sample Program</a></li><li class="navelem"><a class="el" href="dir_16ae9c2ea4a5f0aa52f664a7f28f1f6d.html">workspace</a></li><li class="navelem"><a class="el" href="dir_67490b7fb866fb2b38f0ce8803329bc3.html">RT-BT-9AXIS-sample</a></li><li class="navelem"><a class="el" href="dir_75b34b3e54e3ed8a51198bcf64635829.html">src</a></li><li class="navelem"><a class="el" href="dir_d56a9d48939cff04095961572c57ad6a.html">MAIN</a></li><li class="navelem"><a class="el" href="mpu9250_8c.html">mpu9250.c</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.10 </li>
+  </ul>
+</div>
+</body>
+</html>

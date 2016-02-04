@@ -1,0 +1,6 @@
+<map id="UARTSend" name="UARTSend">
+<area shape="rect" id="node2" href="$debug_8c.html#acb52286c12863b103cc835c3d8310773" title="myPrintfUART" alt="" coords="169,5,273,32"/>
+<area shape="rect" id="node5" href="$_main_function_8c.html#a722d97fdabdf6a349b0ad02c82da1d23" title="TIMER32_1_IRQHandler" alt="" coords="140,56,303,83"/>
+<area shape="rect" id="node3" href="$mode___bluetooth_setting_8c.html#a3dcf830b1ad4a49cef522f95b7553c48" title="mode_BluetoothSetting" alt="" coords="351,5,508,32"/>
+<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="556,5,607,32"/>
+</map>

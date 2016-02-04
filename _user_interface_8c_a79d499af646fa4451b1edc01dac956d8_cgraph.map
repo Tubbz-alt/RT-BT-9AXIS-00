@@ -1,0 +1,17 @@
+<map id="debugUI" name="debugUI">
+<area shape="rect" id="node2" href="$debug_8h.html#a1bd9f450dbe5f0e704bee6a2d945822f" title="myPrintfUSB" alt="" coords="131,31,229,57"/>
+<area shape="rect" id="node13" href="$_user_interface_8c.html#a0fcb3acb1c62b5516b5bb517335d5745" title="getStateSW" alt="" coords="133,81,227,108"/>
+<area shape="rect" id="node14" href="$_user_interface_8c.html#aa8aadb6775b070489ec872b1a5af894a" title="getSWcount" alt="" coords="133,132,227,159"/>
+<area shape="rect" id="node15" href="$_user_interface_8c.html#a8a5eb00b14b07e1e0071e6cbebb202fe" title="getElapsedTime" alt="" coords="123,183,237,209"/>
+<area shape="rect" id="node16" href="$_user_interface_8c.html#afac47cf7206d3f182ae94e2b9ecb9670" title="getVoltage" alt="" coords="138,233,222,260"/>
+<area shape="rect" id="node3" href="$usb_transmission_8h.html#a2d6d7c05d91576af25410bb856740976" title="VCOM_SendData" alt="" coords="291,5,416,32"/>
+<area shape="rect" id="node9" href="$usb_transmission_8h.html#a4a2bacd9a23fff588cb7f5b6538e7b25" title="VCOM_CheckState" alt="" coords="285,56,421,83"/>
+<area shape="rect" id="node4" href="$usbhw_8h.html#a36b8c7a6fd6052d4c52995d8553c0500" title="USB_WriteEP" alt="" coords="659,31,764,57"/>
+<area shape="rect" id="node5" href="$usbhw_8c.html#a4e23ac0156cf32b8055949e0c326adcb" title="delay" alt="" coords="827,5,881,32"/>
+<area shape="rect" id="node6" href="$usbhw_8c.html#aff86a67a8cc3b52fae0e91e96557fc60" title="WrCmdEP" alt="" coords="812,56,896,83"/>
+<area shape="rect" id="node7" href="$usbhw_8c.html#a43a57d8b8cb335d6c95b8517a46c244f" title="WrCmd" alt="" coords="944,31,1011,57"/>
+<area shape="rect" id="node8" href="$usbhw_8c.html#a1aecf030a0d76bccc83101a1cc0e870c" title="EPAdr" alt="" coords="947,81,1007,108"/>
+<area shape="rect" id="node10" href="$cdcuser_8h.html#a7ce873af21ad9bad0f156b742d60e7db" title="CDC_GetSerialState" alt="" coords="469,107,611,133"/>
+<area shape="rect" id="node12" href="$cdcuser_8h.html#a514c6123d586172d406abff1940a0591" title="CDC_NotificationIn" alt="" coords="475,56,605,83"/>
+<area shape="rect" id="node11" href="$serial_8h.html#a622ef81b7c41187c4a56acf8ad01a512" title="ser_LineState" alt="" coords="660,107,763,133"/>
+</map>

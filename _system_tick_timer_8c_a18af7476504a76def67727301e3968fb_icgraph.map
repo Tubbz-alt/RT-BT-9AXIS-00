@@ -1,0 +1,9 @@
+<map id="wait1msec" name="wait1msec">
+<area shape="rect" id="node2" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="487,107,537,133"/>
+<area shape="rect" id="node3" href="$main_8c.html#a2858154e2009b0e6e616f313177762bc" title="init" alt="" coords="341,75,379,101"/>
+<area shape="rect" id="node4" href="$mode___bluetooth_setting_8c.html#a3dcf830b1ad4a49cef522f95b7553c48" title="mode_BluetoothSetting" alt="" coords="281,139,439,165"/>
+<area shape="rect" id="node5" href="$mpu9250_8c.html#af5ba140727514d78380957728fb85858" title="initMPU9250" alt="" coords="137,49,233,76"/>
+<area shape="rect" id="node6" href="$mpu9250_8c.html#a92d3fbffdf08a1e1f34704118cd70ad5" title="initAK8963" alt="" coords="143,100,228,127"/>
+<area shape="rect" id="node7" href="$mpu9250_8c.html#a0a46669bada588b92e12a664eb056db5" title="whoAmI" alt="" coords="151,201,219,228"/>
+<area shape="rect" id="node8" href="$usb_transmission_8c.html#a00ae3d2d42d3c1d67f8779c026b36ec9" title="tryUSBConnect" alt="" coords="304,215,416,241"/>
+</map>

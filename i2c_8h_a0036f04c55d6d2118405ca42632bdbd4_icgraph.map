@@ -1,0 +1,11 @@
+<map id="I2CEngine" name="I2CEngine">
+<area shape="rect" id="node2" href="$mpu9250_8c.html#af5ba140727514d78380957728fb85858" title="initMPU9250" alt="" coords="371,5,467,32"/>
+<area shape="rect" id="node5" href="$mpu9250_8c.html#a92d3fbffdf08a1e1f34704118cd70ad5" title="initAK8963" alt="" coords="376,56,461,83"/>
+<area shape="rect" id="node6" href="$mpu9250_8c.html#a466eb88f64c8c1b064b56a36f6386cf8" title="getDataFromMPU9250" alt="" coords="135,157,289,184"/>
+<area shape="rect" id="node9" href="$mpu9250_8c.html#aee86ce4d1f3ddc7b48689833de2741c2" title="getDataFromAK8963" alt="" coords="141,107,283,133"/>
+<area shape="rect" id="node10" href="$mpu9250_8c.html#a0a46669bada588b92e12a664eb056db5" title="whoAmI" alt="" coords="178,208,246,235"/>
+<area shape="rect" id="node3" href="$main_8c.html#a2858154e2009b0e6e616f313177762bc" title="init" alt="" coords="548,56,587,83"/>
+<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="635,56,685,83"/>
+<area shape="rect" id="node7" href="$_main_function_8c.html#a722d97fdabdf6a349b0ad02c82da1d23" title="TIMER32_1_IRQHandler" alt="" coords="337,107,500,133"/>
+<area shape="rect" id="node8" href="$mpu9250_8c.html#a01202d1c9ed8b04ddfd493d8e41e6379" title="initOmegaRef" alt="" coords="369,157,469,184"/>
+</map>
