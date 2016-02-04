@@ -21,11 +21,16 @@
 
 ## LPCXpresso sample
 LPCXpressoとはLPCマイコン(lpc1343)の統合開発環境です.  
-<http://www.nxp-lpc.com/lpc_boards/lpcxpresso/>
+<http://www.nxp-lpc.com/lpc_boards/lpcxpresso/>   
+
 本センサモジュールに最初に書き込まれているファームウェアの
 プロジェクトです.  開発環境の構築方法およびサンプルプロジェクト
 のインポート方法についてはManualフォルダ内のマニュアルを
 参照してください.  
+
+以下のリンクからサンプルプログラムの説明ページに飛びます.  
+<http://rt-net.github.io/RT-BT-9AXIS-00/>   
+
 
 ## Datasheet
 bletoothモジュールRN-42, 9軸センサMPU9250およびlpc1343マイコンのデータシートです.
