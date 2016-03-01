@@ -53,7 +53,6 @@ float   mag_cor_norm      = 0.0;                       //補正した地磁気�
 float   temperature       = 0.0;                       //センサ温度[度C]
 float   voltage           = 0.0;                       //バッテリー電圧
 
-int hoge__ =0;
 
 //起動時に一回だけ呼ばれる
 void setup() 
@@ -61,7 +60,7 @@ void setup()
   size(650, 600, P3D);
   frameRate(60);
   println(Serial.list());
-  port = new Serial(this, "COM51", 115200*2);  // select port
+  port = new Serial(this, "COM21", 115200);  // select port
 }
 
 //60fpsで描画するので1秒に60回呼ばれる
@@ -95,8 +94,7 @@ void serialEvent(Serial p)
     && buf[28] == 0xff 
     && buf[29] == 0xff )
   {
-     println(hoge__ /80 ,buf[0] ,hex(buf[0], 2)  );
-  hoge__ ++;  
+  
     for (int i = 0; i < 30; i ++)
     {
       inByte[i] = buf[29-i];
@@ -104,19 +102,19 @@ void serialEvent(Serial p)
     port.clear();
 
     //コンソールに受信データを表示
-   // println("=================="); 
-   // println("Byte", "16進", "10進", "結合データ(符号なし)", "結合データ(符号付)", "リファレンス");
+    println("=================="); 
+    println("Byte", "16進", "10進", "結合データ(符号なし)", "結合データ(符号付)", "リファレンス");
 
     for (int i = 0; i<30; i++)
     {
       if (i<=9)
       {
-    //    if (i %2 == 0 && i> 7 ) println(i, "   ", hex(inByte[i], 2), inByte[i], inByte[i] + (inByte[i+1]<<8), byte_info[i]);
-    //    else println(i, "   ", hex(inByte[i], 2), inByte[i], byte_info[i]);
+        if (i %2 == 0 && i> 7 ) println(i, "   ", hex(inByte[i], 2), inByte[i], inByte[i] + (inByte[i+1]<<8), byte_info[i]);
+        else println(i, "   ", hex(inByte[i], 2), inByte[i], byte_info[i]);
       } else
       {
-     //   if (i %2 == 0 && i> 7 ) println(i, "  ", hex(inByte[i], 2), inByte[i], inByte[i] + (inByte[i+1]<<8), byte_info[i] );
-     //   else println(i, "  ", hex(inByte[i], 2), inByte[i], byte_info[i] );
+        if (i %2 == 0 && i> 7 ) println(i, "  ", hex(inByte[i], 2), inByte[i], inByte[i] + (inByte[i+1]<<8), byte_info[i] );
+        else println(i, "  ", hex(inByte[i], 2), inByte[i], byte_info[i] );
       }
     }
 
