@@ -2,6 +2,17 @@
 
 <img src="./Image/RT-BT-9AXIS.png" width="240">
 
+## 注意
+
+本リポジトリは開発終了しました。
+[こちら](https://github.com/rt-net/RT-USB-9AXIS-00)のリポジトリに移行しています。
+
+USB出力9軸IMUセンサモジュールのVer2.0が販売中です。
+
+https://www.rt-net.jp/products/9axisimu2
+
+## 概要
+
 本リポジトリは無線9軸IMUセンサモジュールのサンプルプログラムおよびマニュアル
 をまとめたものです.  各種ファイルの内容は以下になります.  
 
